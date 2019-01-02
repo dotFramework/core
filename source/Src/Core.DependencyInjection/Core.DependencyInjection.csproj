@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;net46;net47;net471;net472;netstandard2.0;netcoreapp2.0;netcoreapp2.1;netcoreapp2.2</TargetFrameworks>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <AssemblyName>$(FullProjectName).DependencyInjection</AssemblyName>
+    <RootNamespace>$(FullProjectName).DependencyInjection</RootNamespace>
+    <AssemblyTitle>dotFramework Core DependencyInjection</AssemblyTitle>
+
+    <PackageId>$(PrePackageName).$(ProjectName).DependencyInjection</PackageId>
+    <Title>dotFramework Core Dependency Injection</Title>
+    <Description>dotFramework Core Dependency Injection</Description>
+    <Summary>dotFramework Core Dependency Injection</Summary>
+    <PackageTags>dotFramework Core Dependency Injection</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+
+    <PackageReference Include="Unity.Interception" Version="5.5.*" />
+    <PackageReference Include="Unity.Container" Version="5.8.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+  </ItemGroup>
+
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
+  </ItemGroup>
+</Project>
