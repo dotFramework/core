@@ -19,32 +19,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.*" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
-    <PackageReference Include="Microsoft.CSharp" Version="4.5.*" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.*" />
-
-    <PackageReference Include="Unity.Interception" Version="5.5.*" />
-    <PackageReference Include="Unity.Container" Version="5.8.*" />
   </ItemGroup>
 
-  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp')) AND '$(TargetFramework)' != 'net40'">
-    <Reference Include="System.Configuration" />
-    <Reference Include="Microsoft.CSharp" />
-
-    <PackageReference Include="Unity.Interception" Version="5.5.*" />
-    <PackageReference Include="Unity.Container" Version="5.8.*" />
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
-    <Reference Include="System.Configuration" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
-    <Compile Remove="Providers\FactoryBase.cs" />
     <Compile Remove="Extensions\TypeExtensions.cs" />
     <Compile Remove="Extensions\PropertyInfoExtensions.cs" />
   </ItemGroup>

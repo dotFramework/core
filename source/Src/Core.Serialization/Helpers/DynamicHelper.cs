@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace DotFramework.Core
+namespace DotFramework.Core.Serialization
 {
     public static class DynamicHelper
     {

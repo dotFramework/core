@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DotFramework.Core
+namespace DotFramework.Core.Serialization
 {
     public class DeserializationException : ExceptionBase
     {

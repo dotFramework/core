@@ -10,7 +10,7 @@ using Unity.Interception.Interceptors.TypeInterceptors.VirtualMethodInterception
 using Unity.Lifetime;
 using Unity.Registration;
 
-namespace DotFramework.Core
+namespace DotFramework.Core.DependencyInjection
 {
     public abstract class FactoryBase<TFactory, TBaseType> : SingletonProvider<TFactory>
         where TFactory : class

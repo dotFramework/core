@@ -7,37 +7,32 @@
     <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
     <FileVersion>$(Version).$(Revision)</FileVersion>
 
-    <AssemblyName>$(FullProjectName).Web</AssemblyName>
-    <RootNamespace>$(FullProjectName).Web</RootNamespace>
-    <AssemblyTitle>dotFramework Core Web</AssemblyTitle>
+    <AssemblyName>$(FullProjectName).Serialization</AssemblyName>
+    <RootNamespace>$(FullProjectName).Serialization</RootNamespace>
+    <AssemblyTitle>dotFramework Core Serialization</AssemblyTitle>
 
-    <PackageId>$(PrePackageName).$(ProjectName).Web</PackageId>
-    <Title>dotFramework Core Web</Title>
-    <Description>dotFramework Core Web</Description>
-    <Summary>dotFramework Core Web</Summary>
-    <PackageTags>dotFramework Core Web</PackageTags>
+    <PackageId>$(PrePackageName).$(ProjectName).Serialization</PackageId>
+    <Title>dotFramework Core Serialization</Title>
+    <Description>dotFramework Core Serialization</Description>
+    <Summary>dotFramework Core Serialization</Summary>
+    <PackageTags>dotFramework Core Serialization</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\Core.Serialization\Core.Serialization.csproj" />
     
     <PackageReference Include="Newtonsoft.Json" Version="12.*" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
-    
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.*" />
   </ItemGroup>
 
   <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp')) AND '$(TargetFramework)' != 'net40'">
-    <Reference Include="System.Net.Http" />
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
-    <PackageReference Include="Microsoft.Net.Http" Version="2.2.*" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
-    
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 </Project>

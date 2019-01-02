@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace DotFramework.Core
+namespace DotFramework.Core.Configuration
 {
     public class AppSettingsManager : SingletonProvider<AppSettingsManager>
     {

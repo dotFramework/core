@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;net46;net47;net471;net472;netstandard2.0;netcoreapp2.0;netcoreapp2.1;netcoreapp2.2</TargetFrameworks>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <AssemblyName>$(FullProjectName).TestSupport</AssemblyName>
+    <RootNamespace>$(FullProjectName).TestSupport</RootNamespace>
+    <AssemblyTitle>dotFramework Core Test Support</AssemblyTitle>
+
+    <PackageId>$(PrePackageName).$(ProjectName).TestSupport</PackageId>
+    <Title>dotFramework Core Test Support</Title>
+    <Description>dotFramework Core Test Support</Description>
+    <Summary>dotFramework Core Test Support</Summary>
+    <PackageTags>dotFramework Core Test Support</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.*" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp')) AND '$(TargetFramework)' != 'net40'">
+    <Reference Include="System.Configuration" />
+    
+    <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+</Project>

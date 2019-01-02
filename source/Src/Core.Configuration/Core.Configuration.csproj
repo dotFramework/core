@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net40;net45;net46;net47;net471;net472;netstandard2.0;netcoreapp2.0;netcoreapp2.1;netcoreapp2.2</TargetFrameworks>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <AssemblyName>$(FullProjectName).Configuration</AssemblyName>
+    <RootNamespace>$(FullProjectName).Configuration</RootNamespace>
+    <AssemblyTitle>dotFramework Core Configuration</AssemblyTitle>
+
+    <PackageId>$(PrePackageName).$(ProjectName).Configuration</PackageId>
+    <Title>dotFramework Core Configuration</Title>
+    <Description>dotFramework Core Configuration</Description>
+    <Summary>dotFramework Core Configuration</Summary>
+    <PackageTags>dotFramework Core Configuration</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+</Project>

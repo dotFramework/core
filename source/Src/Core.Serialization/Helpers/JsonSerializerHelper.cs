@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace DotFramework.Core
+namespace DotFramework.Core.Serialization
 {
     public static class JsonSerializerHelper
     {
