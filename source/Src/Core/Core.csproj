@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net40;net45;net46;net47;net471;net472;netstandard2.0;netcoreapp2.0;netcoreapp2.1;netcoreapp2.2</TargetFrameworks>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <AssemblyName>$(FullProjectName)</AssemblyName>
+    <RootNamespace>$(FullProjectName)</RootNamespace>
+    <AssemblyTitle>dotFramework Core</AssemblyTitle>
+
+    <PackageId>$(PrePackageName).$(ProjectName)</PackageId>
+    <Title>dotFramework Core</Title>
+    <Description>dotFramework Core</Description>
+    <Summary>dotFramework Core</Summary>
+    <PackageTags>dotFramework Core</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.*" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.*" />
+
+    <PackageReference Include="Unity.Interception" Version="5.5.*" />
+    <PackageReference Include="Unity.Container" Version="5.8.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp')) AND '$(TargetFramework)' != 'net40'">
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.CSharp" />
+
+    <PackageReference Include="Unity.Interception" Version="5.5.*" />
+    <PackageReference Include="Unity.Container" Version="5.8.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
+    <Compile Remove="Providers\FactoryBase.cs" />
+    <Compile Remove="Extensions\TypeExtensions.cs" />
+    <Compile Remove="Extensions\PropertyInfoExtensions.cs" />
+  </ItemGroup>
+</Project>
