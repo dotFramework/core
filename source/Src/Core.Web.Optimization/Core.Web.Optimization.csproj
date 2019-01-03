@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\package.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;net46;net47;net471;net472</TargetFrameworks>
+
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+    <FileVersion>$(Version).$(Revision)</FileVersion>
+
+    <AssemblyName>$(FullProjectName).Web.Optimization</AssemblyName>
+    <RootNamespace>$(FullProjectName).Web.Optimization</RootNamespace>
+    <AssemblyTitle>dotFramework Core Web Optimization</AssemblyTitle>
+
+    <PackageId>$(PrePackageName).$(ProjectName).Web.Optimization</PackageId>
+    <Title>dotFramework Core Web Optimization</Title>
+    <Description>dotFramework Core Web Optimization</Description>
+    <Summary>dotFramework Core Web Optimization</Summary>
+    <PackageTags>dotFramework Core Web Optimization</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+
+  </ItemGroup>
+
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard')) AND !$(TargetFramework.StartsWith('netcoreapp'))">
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+
+    <PackageReference Include="Microsoft.AspNet.Web.Optimization" Version="1.1.*" />
+  </ItemGroup>
+</Project>
